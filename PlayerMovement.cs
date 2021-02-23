@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb; //Store a reference to the Rigidbody2D component required to use 2D Physics.
     public Camera cam; //reference camera for mouse aiming 
 
-    private bool _isRight = true;
+    private bool _isRight = true; // assign boolean isRight to true 
 
 
     Vector2 movement;
@@ -21,7 +21,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        movement.x = Input.GetAxis("Horizontal");
+        // get user inputs for mouse and movement
+        movement.x = Input.GetAxis("Horizontal"); 
         movement.y = Input.GetAxis("Vertical");
         mousePosi = cam.ScreenToWorldPoint(Input.mousePosition);
     }
@@ -33,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         //function that returns angle between x axis and a 2d vector starting at 0
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg -90f;
         rb.rotation = angle;
+        // flip the gameobject when moving from left to right or right to left
         if (movement.x > 0 && _isRight == false) Flip();
         if (movement.x < 0 && _isRight == true) Flip();
     }

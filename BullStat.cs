@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class BullStat : MonoBehaviour
 {
+    //call function when collider is triggered
     void OnTriggerEnter2D(Collider2D collision)
     {
+        //if the collision is triggered by enemy then destroy the enemy game object
         if (collision.gameObject.CompareTag("Enemy")) { 
-            Destroy(gameObject);
             Destroy(collision.gameObject);
         }
-        
+        //destroy this object
+         Destroy(gameObject);
     }
 }
